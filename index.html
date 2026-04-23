@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Resep Makanan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>🍜 Resep Makanan</h1>
+  <input type="text" id="search" placeholder="Cari resep...">
+  
+  <select id="filter">
+    <option value="all">Semua</option>
+    <option value="pembuka">Makanan Pembuka</option>
+    <option value="utama">Makanan Utama</option>
+    <option value="penutup">Makanan Penutup</option>
+  </select>
+</header>
+
+<main id="recipe-list"></main>
+
+<!-- Modal Detail -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <span id="close">&times;</span>
+    <img id="detail-img">
+    <h2 id="detail-title"></h2>
+    <p id="detail-desc"></p>
+
+    <h3>Bahan:</h3>
+    <ul id="detail-ingredients"></ul>
+
+    <h3>Langkah:</h3>
+    <ol id="detail-steps"></ol>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
