@@ -12,7 +12,7 @@ const recipes = [
     id: 2,
     name: "Salad Buah",
     category: "pembuka",
-    image: "img/a3c714c7d34cd5a3f252bd7824bbf921.jpg",
+    image: "img/salad.jpg",
     desc: "Salad segar dan sehat",
     ingredients: ["Apel", "Anggur", "Mayones"],
     steps: ["Potong buah", "Campur saus", "Sajikan"]
