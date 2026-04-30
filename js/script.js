@@ -25,35 +25,48 @@ const recipes = [
     desc: "Makanan manis untuk dessert",
     ingredients: ["Tepung", "Telur", "Susu"],
     steps: ["Campur bahan", "Masak di teflon", "Sajikan"]
+  },
+  {
+    id: 4,
+    name: "Soto Ayam",
+    category: "utama",
+    image: "https://source.unsplash.com/400x300/?chicken-soup",
+    desc: "Soto ayam hangat dan gurih",
+    ingredients: ["Ayam", "Kunyit", "Daun salam"],
+    steps: ["Rebus ayam", "Masukkan bumbu", "Sajikan"]
   }
 ];
 
 const list = document.getElementById("recipe-list");
 const searchInput = document.getElementById("search");
 const filter = document.getElementById("filter");
+const modal = document.getElementById("modal");
 
 function displayRecipes(data) {
-  list.innerHTML = "";
-  data.forEach(r => {
-    list.innerHTML += `
-      <div class="card">
-        <img src="${r.image}">
-        <div class="card-content">
-          <h3>${r.name}</h3>
-          <p>${r.desc}</p>
-          <button onclick="showDetail(${r.id})">Lihat Detail</button>
-        </div>
+  if (data.length === 0) {
+    list.innerHTML = "<p>Tidak ada resep ditemukan</p>";
+    return;
+  }
+
+  list.innerHTML = data.map(r => `
+    <div class="card">
+      <img src="${r.image}" alt="${r.name}">
+      <div class="card-content">
+        <h3>${r.name}</h3>
+        <p>${r.desc}</p>
+        <button onclick="showDetail(${r.id})">Lihat Detail</button>
       </div>
-    `;
-  });
+    </div>
+  `).join("");
 }
 
 function showDetail(id) {
   const r = recipes.find(x => x.id === id);
+  if (!r) return;
 
   document.getElementById("detail-img").src = r.image;
-  document.getElementById("detail-title").innerText = r.name;
-  document.getElementById("detail-desc").innerText = r.desc;
+  document.getElementById("detail-title").textContent = r.name;
+  document.getElementById("detail-desc").textContent = r.desc;
 
   document.getElementById("detail-ingredients").innerHTML =
     r.ingredients.map(i => `<li>${i}</li>`).join("");
@@ -61,15 +74,18 @@ function showDetail(id) {
   document.getElementById("detail-steps").innerHTML =
     r.steps.map(s => `<li>${s}</li>`).join("");
 
-  document.getElementById("modal").classList.remove("hidden");
+  modal.classList.remove("hidden");
 }
 
 document.getElementById("close").onclick = () => {
-  document.getElementById("modal").classList.add("hidden");
+  modal.classList.add("hidden");
 };
 
-searchInput.addEventListener("input", filterData);
-filter.addEventListener("change", filterData);
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+};
 
 function filterData() {
   const search = searchInput.value.toLowerCase();
@@ -89,5 +105,12 @@ function filterData() {
   displayRecipes(filtered);
 }
 
-// Init
+let timeout;
+searchInput.addEventListener("input", () => {
+  clearTimeout(timeout);
+  timeout = setTimeout(filterData, 300);
+});
+
+filter.addEventListener("change", filterData);
+
 displayRecipes(recipes);
