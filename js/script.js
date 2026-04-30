@@ -3,7 +3,7 @@ const recipes = [
     id: 1,
     name: "Nasi Goreng",
     category: "utama",
-    image: "https://source.unsplash.com/400x300/?fried-rice",
+    image: "img/de896483794fcb816671757958e5c9a6.avif",
     desc: "Nasi goreng khas Indonesia",
     ingredients: ["Nasi", "Telur", "Kecap", "Bawang"],
     steps: ["Panaskan minyak", "Masukkan bahan", "Aduk rata"]
@@ -12,7 +12,7 @@ const recipes = [
     id: 2,
     name: "Salad Buah",
     category: "pembuka",
-    image: "https://source.unsplash.com/400x300/?fruit-salad",
+    image: "img/a3c714c7d34cd5a3f252bd7824bbf921.jpg",
     desc: "Salad segar dan sehat",
     ingredients: ["Apel", "Anggur", "Mayones"],
     steps: ["Potong buah", "Campur saus", "Sajikan"]
@@ -21,7 +21,7 @@ const recipes = [
     id: 3,
     name: "Pancake",
     category: "penutup",
-    image: "https://source.unsplash.com/400x300/?pancake",
+    image: " img/photo.jpg",
     desc: "Makanan manis untuk dessert",
     ingredients: ["Tepung", "Telur", "Susu"],
     steps: ["Campur bahan", "Masak di teflon", "Sajikan"]
@@ -30,7 +30,7 @@ const recipes = [
     id: 4,
     name: "Soto Ayam",
     category: "utama",
-    image: "https://source.unsplash.com/400x300/?chicken-soup",
+    image: "img/photo (1).jpg",
     desc: "Soto ayam hangat dan gurih",
     ingredients: ["Ayam", "Kunyit", "Daun salam"],
     steps: ["Rebus ayam", "Masukkan bumbu", "Sajikan"]
